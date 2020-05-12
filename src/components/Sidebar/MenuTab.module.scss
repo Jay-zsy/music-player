@@ -1,0 +1,24 @@
+.menuTab {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    .section {
+        height: 40px;
+        display: flex;
+        align-items: center;
+        padding: 0 12px;
+        cursor: pointer;
+        font-weight: 700;
+        color: #4e4e4e;
+
+        .label {
+            margin-left: 16px;
+        }
+
+        &:hover {
+            color: #101010
+        }
+    }
+}

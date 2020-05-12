@@ -1,0 +1,33 @@
+.searchbar {
+    margin: 0 2rem;
+    width: 100%;
+    position: relative;
+
+    input {
+        height: 40px;
+        width: 100%;
+        padding: 6px 48px;
+        border: 0;
+        border-radius: 500px;
+        text-overflow: ellipsis;
+        font-family: "Sen", sans-serif;
+        font-size: 11px;
+        color: black;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 12px;
+        right: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        pointer-events: none;
+    }
+}

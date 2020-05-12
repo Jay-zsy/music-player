@@ -1,0 +1,34 @@
+.sidebar {
+    grid-area: side-bar;
+    background-color: #ffffff;
+    width: 230px;
+    height: calc(100vh - 90px);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 24px 12px 0 12px;
+
+    // ::-webkit-scrollbar {
+    //     width: 17px;
+    //     height: 17px;
+    //     background-color: #ffffff;
+    // }
+
+    // ::-webkit-scrollbar-track {
+    //     border: 8px solid #ffffff;
+    //     background-color: #aaaaaa;
+    // }
+
+    // ::-webkit-scrollbar-thumb {
+    //     border: 8px solid #ffffff;
+    //     background-color: #000000;
+    //     min-height: 24px;
+    //     min-width: 24px;
+    // }
+
+    .divider {
+        background-color: #282828;
+        border: none;
+        height: 1px;
+    }
+}

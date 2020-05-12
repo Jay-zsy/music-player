@@ -1,0 +1,15 @@
+.right {
+    width: 30%;
+
+    button {
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+        border: 0;
+        background: transparent;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}

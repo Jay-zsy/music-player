@@ -1,0 +1,34 @@
+.container {
+    grid-area: main-view;
+    width: 100%;
+    position: relative;
+    height: calc(100vh - 90px);
+
+    .viewNode {
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        min-height: 0;
+        height: 100%;
+        overflow-y: scroll;
+
+        .space {
+            position: sticky;
+            top: 0;
+            height: 60px;
+        }
+
+        .wrapper {
+            display: grid;
+            grid-gap: 32px;
+            padding: 0 32px;
+            overflow-y: scroll;
+
+            .block {
+                display: flex;
+                flex-direction: column;
+                min-height: 300px;
+            }
+        }
+    }
+}

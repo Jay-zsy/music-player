@@ -1,0 +1,30 @@
+.playlistTab {
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    list-style: none;
+    margin: 0;
+
+    .playlist {
+        height: 32px;
+        font-size: 14px;
+        // padding: 0 24px 0 16px;
+        display: flex;
+        flex: 1;
+        align-items: center;
+
+        .title {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #4e4e4e;
+        }
+
+        &:hover {
+            cursor: pointer;
+
+            .title {
+                color: #101010;
+            }
+        }
+    }
+}

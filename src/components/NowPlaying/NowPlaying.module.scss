@@ -1,0 +1,15 @@
+.playingContainer {
+    grid-area: now-playing;
+    // position: sticky;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid white;
+    height: 90px;
+    z-index: 4;
+    padding: 0 16px;
+
+    .placeholder {
+        width: 30%;
+    }
+}

@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Montserrat|Sen:400,700&display=swap");
+
+// font-family: 'Sen', sans-serif;
+// font-family: 'Montserrat', sans-serif;
+
+.musicApp {
+  font-family: "Sen", sans-serif;
+  color: #101010;
+  background: #f4f4f4;
+  min-height: 100%;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "side-bar main-view"
+    "now-playing now-playing";
+}

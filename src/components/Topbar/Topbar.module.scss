@@ -1,0 +1,14 @@
+.topbar {
+    grid-area: main-view;
+    height: 60px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    // background: #f4f4f4;
+
+    .wrapper {
+        display: flex;
+        flex: 0 1 364px;
+    }
+}

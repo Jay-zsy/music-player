@@ -1,0 +1,32 @@
+.controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+
+    .buttons {
+        width: 224px;
+        display: flex;
+        justify-content: space-between;
+
+        button {
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            border: 0;
+            background: transparent;
+
+            &.center {
+                border: 1px solid black;
+                border-radius: 50px;
+            }
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+
+    }
+}
