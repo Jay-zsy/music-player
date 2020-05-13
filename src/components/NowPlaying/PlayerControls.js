@@ -23,15 +23,17 @@ export default function PlayerControls({
     <div className={styles.controls}>
       <div className={styles.buttons}>
         <StylesProvider injectFirst>
-          <button onClick={toggleShuffle}>
-            <ShuffleIcon
-              style={
-                currentPlayback.shuffle
-                  ? buttonStyle("active")
-                  : buttonStyle("inactive")
-              }
-            />
-          </button>
+          {currentPlayback.shuffle && (
+            <button onClick={toggleShuffle}>
+              <ShuffleIcon
+                style={
+                  currentPlayback.shuffle
+                    ? buttonStyle("active")
+                    : buttonStyle("inactive")
+                }
+              />
+            </button>
+          )}
           <button onClick={skipToPrevious}>
             <SkipPreviousIcon style={buttonStyle("inactive")} />
           </button>
