@@ -198,3 +198,16 @@ export const progressFill = (progress, duration) => {
   let width = (progress / duration) * 100;
   return `${width}%`;
 };
+// click to seek position
+export const seek = async (e, duration) => {
+  const currentPosition = e.nativeEvent.offsetX;
+  const totalDuration = e.nativeEvent.target.offsetWidth;
+  try {
+    const res = await spotifyApi.seek(
+      Math.floor((currentPosition / totalDuration) * duration)
+    );
+    console.log(res);
+  } catch (err) {
+    console.log(err);
+  }
+};

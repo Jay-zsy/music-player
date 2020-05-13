@@ -5,6 +5,7 @@ import {
   updateProgress,
   delta,
   progressFill,
+  seek,
 } from "../../helperFn/helperFn";
 export default function PlaybackBar({ duration, position, currentPlayback }) {
   const progress = useRef(null);
@@ -34,7 +35,12 @@ export default function PlaybackBar({ duration, position, currentPlayback }) {
         {position > 0 ? msToTime(position) : "0:00"}
       </div>
 
-      <div className={styles.progressbar}>
+      <div
+        className={styles.progressbar}
+        onClick={(e) => {
+          seek(e, currentPlayback.duration);
+        }}
+      >
         <div className={styles.progressbarBG}>
           <div
             className={styles.progressbarFG}
