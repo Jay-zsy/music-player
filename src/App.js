@@ -329,6 +329,7 @@ export default function MusicApp() {
         loadMoreTracks={loadMoreTracks}
         refreshToken={refreshToken}
         liked={liked}
+        setLiked={setLiked}
       />
     </div>
   );

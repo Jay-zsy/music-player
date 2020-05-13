@@ -162,19 +162,21 @@ export const getPlaylistContext = async (
   });
 };
 //add track to liked/library
-export const likeTrack = async (trackID) => {
+export const likeTrack = async (trackID, setLiked) => {
   try {
-    const res = await spotifyApi.addToMySavedTracks([trackID]);
-    console.log("Added", res);
+    await spotifyApi.addToMySavedTracks([trackID]);
+    console.log("Added");
+    setLiked([true]);
   } catch (err) {
     console.log(err);
   }
 };
 //remove track from liked/library
-export const unlikeTrack = async (trackID) => {
+export const unlikeTrack = async (trackID, setLiked) => {
   try {
-    const res = await spotifyApi.removeFromMySavedTracks([trackID]);
-    console.log("Removed", res);
+    await spotifyApi.removeFromMySavedTracks([trackID]);
+    console.log("Removed");
+    setLiked([false]);
   } catch (err) {
     console.log(err);
   }
