@@ -181,3 +181,16 @@ export const unlikeTrack = async (trackID, setLiked) => {
     console.log(err);
   }
 };
+// update progress
+export const updateProgress = (currentTime, delta, offset) => {
+  // console.log(currentTime);
+  currentTime = Number(currentTime) + delta(offset);
+  return currentTime;
+};
+// calculate delta time
+export const delta = (offset) => {
+  let now = Date.now();
+  let d = now - offset;
+  offset = now;
+  return d;
+};

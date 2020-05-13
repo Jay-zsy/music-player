@@ -5,6 +5,7 @@ import PlayingBarLeft from "./PlayingBarLeft";
 import PlayingBarRight from "./PlayingBarRight";
 export default function NowPlaying({
   currentPlayback,
+  setCurrentPlayback,
   skipToNext,
   skipToPrevious,
   play,
@@ -32,6 +33,7 @@ export default function NowPlaying({
         skipToPrevious={skipToPrevious}
         play={play}
         currentPlayback={currentPlayback}
+        setCurrentPlayback={setCurrentPlayback}
         pause={pause}
         toggleShuffle={toggleShuffle}
         toggleRepeat={toggleRepeat}

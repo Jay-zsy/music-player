@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import styles from "./PlaybackBar.module.scss";
-import { msToTime } from "../../helperFn/helperFn";
-export default function PlaybackBar({ duration, position }) {
-  console.log(position);
+import { msToTime, updateProgress, delta } from "../../helperFn/helperFn";
+export default function PlaybackBar({ duration, position, currentPlayback }) {
+  const progress = useRef(null);
+  useEffect(() => {
+    // if (currentPlayback.paused) {
+    //   progress.current.innerHTML = msToTime(currentPlayback.position);
+    // }
+    if (currentPlayback.paused === false) {
+      let offset = Date.now();
+      const interval = setInterval(() => {
+        progress.current.innerHTML = msToTime(
+          updateProgress(currentPlayback.position, delta, offset)
+        );
+      }, 1);
+      return () => clearInterval(interval);
+    }
+  }, [currentPlayback]);
   return (
     <div className={styles.playbackbar}>
       <div
+        ref={progress}
         className={styles.position}
         style={{ fontSize: "11px", minWidth: "40px", textAlign: "center" }}
       >

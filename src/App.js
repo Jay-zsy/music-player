@@ -71,7 +71,7 @@ export default function MusicApp() {
       await spotifyApi.play();
       console.log("played");
       setCurrentPlayback((prevState) => {
-        return { ...prevState, is_playing: true };
+        return { ...prevState, paused: false };
       });
     } catch (err) {
       console.log(err);
@@ -83,7 +83,7 @@ export default function MusicApp() {
       await spotifyApi.pause();
       console.log("paused");
       setCurrentPlayback((prevState) => {
-        return { ...prevState, is_playing: false };
+        return { ...prevState, paused: true };
       });
     } catch (err) {
       console.log(err);
@@ -330,6 +330,7 @@ export default function MusicApp() {
       />
       <NowPlaying
         currentPlayback={currentPlayback}
+        setCurrentPlayback={setCurrentPlayback}
         skipToNext={skipToNext}
         skipToPrevious={skipToPrevious}
         play={play}

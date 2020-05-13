@@ -15,6 +15,7 @@ export default function PlayerControls({
   skipToPrevious,
   play,
   currentPlayback,
+  setCurrentPlayback,
   pause,
   toggleShuffle,
   toggleRepeat,
@@ -23,17 +24,15 @@ export default function PlayerControls({
     <div className={styles.controls}>
       <div className={styles.buttons}>
         <StylesProvider injectFirst>
-          {currentPlayback.shuffle && (
-            <button onClick={toggleShuffle}>
-              <ShuffleIcon
-                style={
-                  currentPlayback.shuffle
-                    ? buttonStyle("active")
-                    : buttonStyle("inactive")
-                }
-              />
-            </button>
-          )}
+          <button onClick={toggleShuffle}>
+            <ShuffleIcon
+              style={
+                currentPlayback.shuffle
+                  ? buttonStyle("active")
+                  : buttonStyle("inactive")
+              }
+            />
+          </button>
           <button onClick={skipToPrevious}>
             <SkipPreviousIcon style={buttonStyle("inactive")} />
           </button>
@@ -64,11 +63,18 @@ export default function PlayerControls({
               <RepeatIcon style={buttonStyle("inactive")} />
             </button>
           )}
+          {currentPlayback.repeat_mode === undefined && (
+            <button onClick={toggleRepeat}>
+              <RepeatIcon style={buttonStyle("inactive")} />
+            </button>
+          )}
         </StylesProvider>
       </div>
       <PlaybackBar
         duration={currentPlayback?.duration}
         position={currentPlayback?.position}
+        currentPlayback={currentPlayback}
+        setCurrentPlayback={setCurrentPlayback}
       />
     </div>
   );
