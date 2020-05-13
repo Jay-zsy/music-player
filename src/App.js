@@ -60,8 +60,14 @@ export default function MusicApp() {
 
   const skipToPrevious = async () => {
     try {
-      const response = await spotifyApi.skipToPrevious();
-      console.log(response);
+      if (currentPlayback?.position <= 1000) {
+        await spotifyApi.skipToPrevious();
+        console.log("Skip to prev");
+      } else {
+        await spotifyApi.seek(0);
+        await spotifyApi.play();
+        console.log("Play that back");
+      }
     } catch (err) {
       console.log(err);
     }
