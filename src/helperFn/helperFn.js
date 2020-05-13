@@ -161,3 +161,21 @@ export const getPlaylistContext = async (
     currentPlaylistTracks,
   });
 };
+//add track to liked/library
+export const likeTrack = async (trackID) => {
+  try {
+    const res = await spotifyApi.addToMySavedTracks([trackID]);
+    console.log("Added", res);
+  } catch (err) {
+    console.log(err);
+  }
+};
+//remove track from liked/library
+export const unlikeTrack = async (trackID) => {
+  try {
+    const res = await spotifyApi.removeFromMySavedTracks([trackID]);
+    console.log("Removed", res);
+  } catch (err) {
+    console.log(err);
+  }
+};
