@@ -4,28 +4,39 @@ import VolumeUpIcon from "@material-ui/icons/VolumeUp";
 import VolumeDownIcon from "@material-ui/icons/VolumeDown";
 import VolumeMuteIcon from "@material-ui/icons/VolumeMute";
 import VolumeOffIcon from "@material-ui/icons/VolumeOff";
-import { toggleMute, buttonStyle } from "../../helperFn/helperFn";
-export default function PlayingBarRight({ loadMoreTracks, refreshToken }) {
+import { buttonStyle, volumeFill } from "../../helperFn/helperFn";
+export default function PlayingBarRight({ volume, toggleVolume }) {
   return (
     <div className={styles.right}>
       <div className={styles.volume}>
-        <button onClick={toggleMute}>
-          <VolumeUpIcon style={buttonStyle("inactive")} />
-        </button>
-        <button onClick={refreshToken}>
-          <VolumeDownIcon style={buttonStyle("inactive")} />
-        </button>
-        <button onClick={loadMoreTracks}>
-          <VolumeMuteIcon style={buttonStyle("inactive")} />
-        </button>
-        <button onClick={toggleMute}>
-          <VolumeOffIcon style={buttonStyle("inactive")} />
-        </button>
+        {volume.current > 0.74 && (
+          <button onClick={() => toggleVolume(volume)}>
+            <VolumeUpIcon style={buttonStyle("inactive")} />
+          </button>
+        )}
+        {volume.current <= 0.74 && volume > 0.24 && (
+          <button onClick={() => toggleVolume(volume)}>
+            <VolumeDownIcon style={buttonStyle("inactive")} />
+          </button>
+        )}
+        {volume.current <= 0.24 && volume >= 0.01 && (
+          <button onClick={() => toggleVolume(volume)}>
+            <VolumeMuteIcon style={buttonStyle("inactive")} />
+          </button>
+        )}
+        {volume.current === 0 && (
+          <button onClick={() => toggleVolume(volume)}>
+            <VolumeOffIcon style={buttonStyle("inactive")} />
+          </button>
+        )}
 
         <div className={styles.progress}>
-          <div className={styles.progressBG}>
-            <div className={styles.progressFG}>
-              <button className={styles.progressChange}></button>
+          <div className={styles.progressbarBG}>
+            <div
+              className={styles.progressbarFG}
+              style={{ width: volumeFill(volume.current) }}
+            >
+              {/* <button className={styles.progressChange}></button> */}
             </div>
           </div>
         </div>

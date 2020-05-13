@@ -16,6 +16,8 @@ export default function NowPlaying({
   refreshToken,
   liked,
   setLiked,
+  volume,
+  toggleVolume,
 }) {
   return (
     <div className={styles.playingContainer}>
@@ -39,8 +41,10 @@ export default function NowPlaying({
         toggleRepeat={toggleRepeat}
       />
       <PlayingBarRight
-        loadMoreTracks={loadMoreTracks}
-        refreshToken={refreshToken}
+        // loadMoreTracks={loadMoreTracks}
+        // refreshToken={refreshToken}
+        volume={volume}
+        toggleVolume={toggleVolume}
       />
     </div>
   );

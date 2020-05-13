@@ -32,6 +32,7 @@ export default function MusicApp() {
   const [currentPlaylistContext, setCurrentPlaylistContext] = useState({});
   const [liked, setLiked] = useState([]);
   const [categories, setCategories] = useState({});
+  const [volume, setVolume] = useState({ current: 100, prev: 0 });
 
   const transferPlayback = (deviceID) => {
     spotifyApi
@@ -103,6 +104,26 @@ export default function MusicApp() {
     try {
       const newRepeatState = cycleRepeat(currentPlayback.repeat_mode);
       await spotifyApi.setRepeat(newRepeatState);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // toggle volume
+  const toggleVolume = async (volume) => {
+    try {
+      if (volume.current) {
+        setVolume((prevState) => {
+          spotifyApi.setVolume(0);
+          return { current: 0, prev: prevState.current };
+        });
+      } else {
+        setVolume((prevState) => {
+          console.log(prevState.prev);
+          spotifyApi.setVolume(prevState.prev);
+          return { current: prevState.prev, prev: 0 };
+        });
+      }
     } catch (err) {
       console.log(err);
     }
@@ -199,6 +220,9 @@ export default function MusicApp() {
           webPlayback.getVolume().then((volume) => {
             let volume_percentage = volume * 100;
             console.log(`The volume of the player is ${volume_percentage}%`);
+            setVolume((prevState) => {
+              return { ...prevState, current: volume_percentage };
+            });
           });
         });
         // SDK on ready
@@ -346,6 +370,8 @@ export default function MusicApp() {
         refreshToken={refreshToken}
         liked={liked}
         setLiked={setLiked}
+        volume={volume}
+        toggleVolume={toggleVolume}
       />
     </div>
   );

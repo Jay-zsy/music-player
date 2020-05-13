@@ -97,10 +97,6 @@ export const filterDuplicates = (recentlyPlayed) => {
     }
   });
 };
-//toggle mute volume
-export const toggleMute = () => {
-  console.log("muted noob");
-};
 //calculate total playtime
 export const calculatePlaytime = (tracksArr, summary) => {
   if (!tracksArr) {
@@ -197,6 +193,9 @@ export const delta = (offset) => {
 export const progressFill = (progress, duration) => {
   let width = (progress / duration) * 100;
   return `${width}%`;
+};
+export const volumeFill = (volume) => {
+  return `${volume}%`;
 };
 // click to seek position
 export const seek = async (e, duration) => {
