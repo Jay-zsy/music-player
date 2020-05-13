@@ -64,7 +64,10 @@ export default function PlayerControls({
           )}
         </StylesProvider>
       </div>
-      <PlaybackBar duration={currentPlayback?.duration} />
+      <PlaybackBar
+        duration={currentPlayback?.duration}
+        position={currentPlayback?.position}
+      />
     </div>
   );
 }
