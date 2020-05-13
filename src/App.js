@@ -1,5 +1,3 @@
-//LIMIT ARRAY TO 350 OR PAYLOAD SIZE TOO BIG
-//THIS IS VERY IMPORTANT
 import React, { useState, useEffect } from "react";
 import styles from "./MusicApp.module.scss";
 import Sidebar from "./components/Sidebar/Sidebar";
@@ -42,14 +40,10 @@ export default function MusicApp() {
       .catch(console.log());
   };
 
-  const refreshToken = async () => {
-    try {
-      axios
-        .get("http://localhost:8888/refresh_token", { withCredentials: true })
-        .then((res) => console.log(res));
-    } catch (err) {
-      console.log(err);
-    }
+  const refreshToken = () => {
+    return axios
+      .get("/refresh_token", { withCredentials: true })
+      .then((res) => console.log(res));
   };
 
   const skipToNext = async () => {
@@ -136,10 +130,6 @@ export default function MusicApp() {
   useEffect(() => {
     if (spotifyToken) {
       spotifyApi.setAccessToken(spotifyToken);
-      const sdkScript = document.createElement("script");
-      sdkScript.type = "text/javascript";
-      sdkScript.src = "https://sdk.scdn.co/spotify-player.js";
-      document.getElementsByTagName("head")[0].appendChild(sdkScript);
       window.onSpotifyWebPlaybackSDKReady = () => {
         const webPlayback = new window.Spotify.Player({
           name: "Jay's Music Player - Web SDK",
@@ -150,10 +140,16 @@ export default function MusicApp() {
 
         // SDK Error handling
         webPlayback.addListener("initialization_error", ({ message }) => {
-          console.error(message);
+          console.error("Initialization Error:", message);
+          refreshToken()
+            .then(setSpotifyToken(getCookie("spotify_access_token")))
+            .catch(console.log);
         });
         webPlayback.addListener("authentication_error", ({ message }) => {
-          console.error(message);
+          console.error("Authentication Error(401):", message);
+          refreshToken()
+            .then(setSpotifyToken(getCookie("spotify_access_token")))
+            .catch(console.log);
         });
         webPlayback.addListener("account_error", ({ message }) => {
           console.error(message);
@@ -182,6 +178,10 @@ export default function MusicApp() {
             shuffle,
             timestamp,
           });
+          console.log(
+            "this is the token inside the cookie: ",
+            getCookie("spotify_access_token")
+          );
         });
         // SDK on ready
         webPlayback.addListener("ready", ({ device_id }) => {
