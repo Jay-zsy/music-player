@@ -229,7 +229,6 @@ export default function MusicApp() {
 
           webPlayback.getVolume().then((volume) => {
             let volume_percentage = volume * 100;
-            console.log(`The volume of the player is ${volume_percentage}%`);
             setVolume((prevState) => {
               return { ...prevState, current: Math.floor(volume_percentage) };
             });
