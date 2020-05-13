@@ -1,17 +1,24 @@
 import React, { useRef, useEffect } from "react";
 import styles from "./PlaybackBar.module.scss";
-import { msToTime, updateProgress, delta } from "../../helperFn/helperFn";
+import {
+  msToTime,
+  updateProgress,
+  delta,
+  progressFill,
+} from "../../helperFn/helperFn";
 export default function PlaybackBar({ duration, position, currentPlayback }) {
   const progress = useRef(null);
+  const fill = useRef(null);
   useEffect(() => {
-    // if (currentPlayback.paused) {
-    //   progress.current.innerHTML = msToTime(currentPlayback.position);
-    // }
     if (currentPlayback.paused === false) {
       let offset = Date.now();
       const interval = setInterval(() => {
         progress.current.innerHTML = msToTime(
           updateProgress(currentPlayback.position, delta, offset)
+        );
+        fill.current.style.width = progressFill(
+          updateProgress(currentPlayback.position, delta, offset),
+          currentPlayback.duration
         );
       }, 1);
       return () => clearInterval(interval);
@@ -29,8 +36,17 @@ export default function PlaybackBar({ duration, position, currentPlayback }) {
 
       <div className={styles.progressbar}>
         <div className={styles.progressbarBG}>
-          <div className={styles.progressbarFG}></div>
-          <button className={styles.progressChange}></button>
+          <div
+            className={styles.progressbarFG}
+            ref={fill}
+            style={{
+              width: progressFill(
+                currentPlayback.position,
+                currentPlayback.duration
+              ),
+            }}
+          ></div>
+          {/* <button className={styles.progressChange}></button> */}
         </div>
       </div>
 
