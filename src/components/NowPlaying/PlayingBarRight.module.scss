@@ -1,5 +1,8 @@
 .right {
     width: 30%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 
     button {
         width: 32px;

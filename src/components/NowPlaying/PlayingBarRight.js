@@ -21,6 +21,14 @@ export default function PlayingBarRight({ loadMoreTracks, refreshToken }) {
         <button onClick={toggleMute}>
           <VolumeOffIcon style={buttonStyle("inactive")} />
         </button>
+
+        <div className={styles.progress}>
+          <div className={styles.progressBG}>
+            <div className={styles.progressFG}>
+              <button className={styles.progressChange}></button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
