@@ -5,7 +5,11 @@ import VolumeDownIcon from "@material-ui/icons/VolumeDown";
 import VolumeMuteIcon from "@material-ui/icons/VolumeMute";
 import VolumeOffIcon from "@material-ui/icons/VolumeOff";
 import { buttonStyle, volumeFill } from "../../helperFn/helperFn";
-export default function PlayingBarRight({ volume, toggleVolume }) {
+export default function PlayingBarRight({
+  volume,
+  toggleVolume,
+  updateVolume,
+}) {
   return (
     <div className={styles.right}>
       <div className={styles.volume}>
@@ -31,7 +35,10 @@ export default function PlayingBarRight({ volume, toggleVolume }) {
         )}
 
         <div className={styles.progress}>
-          <div className={styles.progressbarBG}>
+          <div
+            className={styles.progressbarBG}
+            onClick={(e) => updateVolume(e)}
+          >
             <div
               className={styles.progressbarFG}
               style={{ width: volumeFill(volume.current) }}

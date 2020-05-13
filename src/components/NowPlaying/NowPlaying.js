@@ -18,6 +18,7 @@ export default function NowPlaying({
   setLiked,
   volume,
   toggleVolume,
+  updateVolume,
 }) {
   return (
     <div className={styles.playingContainer}>
@@ -45,6 +46,7 @@ export default function NowPlaying({
         // refreshToken={refreshToken}
         volume={volume}
         toggleVolume={toggleVolume}
+        updateVolume={updateVolume}
       />
     </div>
   );

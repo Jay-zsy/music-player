@@ -119,7 +119,6 @@ export default function MusicApp() {
         });
       } else {
         setVolume((prevState) => {
-          console.log(prevState.prev);
           spotifyApi.setVolume(prevState.prev);
           return { current: prevState.prev, prev: 0 };
         });
@@ -127,6 +126,17 @@ export default function MusicApp() {
     } catch (err) {
       console.log(err);
     }
+  };
+
+  // update volume
+  const updateVolume = async (e) => {
+    const currentPosition = e.nativeEvent.offsetX;
+    const totalWidth = e.nativeEvent.target.offsetWidth;
+    const volume = Math.floor((currentPosition / totalWidth) * 100);
+    setVolume((prevState) => {
+      spotifyApi.setVolume(volume);
+      return { current: volume, prev: prevState.current };
+    });
   };
 
   //Get more tracks
@@ -221,7 +231,7 @@ export default function MusicApp() {
             let volume_percentage = volume * 100;
             console.log(`The volume of the player is ${volume_percentage}%`);
             setVolume((prevState) => {
-              return { ...prevState, current: volume_percentage };
+              return { ...prevState, current: Math.floor(volume_percentage) };
             });
           });
         });
@@ -372,6 +382,7 @@ export default function MusicApp() {
         setLiked={setLiked}
         volume={volume}
         toggleVolume={toggleVolume}
+        updateVolume={updateVolume}
       />
     </div>
   );
