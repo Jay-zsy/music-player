@@ -195,6 +195,11 @@ export default function MusicApp() {
             }
           };
           getLikedStatus();
+
+          webPlayback.getVolume().then((volume) => {
+            let volume_percentage = volume * 100;
+            console.log(`The volume of the player is ${volume_percentage}%`);
+          });
         });
         // SDK on ready
         webPlayback.addListener("ready", ({ device_id }) => {
