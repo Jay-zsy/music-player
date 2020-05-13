@@ -31,6 +31,7 @@ export default function MusicApp() {
   const [savedTracks, setSavedTracks] = useState({});
   const [currentPlaylistContext, setCurrentPlaylistContext] = useState({});
   const [liked, setLiked] = useState([]);
+  const [categories, setCategories] = useState({});
 
   const transferPlayback = (deviceID) => {
     spotifyApi
@@ -272,6 +273,14 @@ export default function MusicApp() {
                 offset,
               } = await spotifyApi.getMySavedTracks({ limit: 50 });
               setSavedTracks({ myTracks, total, offset });
+
+              //getting first 50 categories
+              const { categories } = await spotifyApi.getCategories({
+                country: "US",
+                limit: 50,
+              });
+
+              setCategories(categories);
             } catch (err) {
               console.log("There was an error getting my info!");
             }
@@ -317,6 +326,7 @@ export default function MusicApp() {
         savedTracks={savedTracks}
         currentPlaylistContext={currentPlaylistContext}
         playlists={playlists}
+        categories={categories}
       />
       <NowPlaying
         currentPlayback={currentPlayback}
