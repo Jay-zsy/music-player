@@ -59,6 +59,11 @@
 
         }
 
+        &:hover .progress {
+            .progressbarFG {
+                background-color: #2ab859;
+            }
+        }
     }
 
 }
