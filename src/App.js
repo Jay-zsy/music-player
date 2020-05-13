@@ -30,6 +30,7 @@ export default function MusicApp() {
   const [topTracks, setTopTracks] = useState([]);
   const [savedTracks, setSavedTracks] = useState({});
   const [currentPlaylistContext, setCurrentPlaylistContext] = useState({});
+  const [liked, setLiked] = useState([]);
 
   const transferPlayback = (deviceID) => {
     spotifyApi
@@ -137,7 +138,6 @@ export default function MusicApp() {
             callback(spotifyToken);
           },
         });
-
         // SDK Error handling
         webPlayback.addListener("initialization_error", ({ message }) => {
           console.error("Initialization Error:", message);
@@ -152,10 +152,13 @@ export default function MusicApp() {
             .catch(console.log);
         });
         webPlayback.addListener("account_error", ({ message }) => {
-          console.error(message);
+          console.error("Account Error(Wrong account type):", message);
         });
         webPlayback.addListener("playback_error", ({ message }) => {
-          console.error(message);
+          console.error("Playback Error:", message);
+          refreshToken()
+            .then(setSpotifyToken(getCookie("spotify_access_token")))
+            .catch(console.log);
         });
         // SDK Playback status updates
         webPlayback.addListener("player_state_changed", (state) => {
@@ -178,10 +181,19 @@ export default function MusicApp() {
             shuffle,
             timestamp,
           });
-          console.log(
-            "this is the token inside the cookie: ",
-            getCookie("spotify_access_token")
-          );
+
+          //getting liked status
+          const getLikedStatus = async () => {
+            try {
+              const likedStatus = await spotifyApi.containsMySavedTracks([
+                track_window?.current_track?.id,
+              ]);
+              setLiked(likedStatus);
+            } catch (err) {
+              console.log(err);
+            }
+          };
+          getLikedStatus();
         });
         // SDK on ready
         webPlayback.addListener("ready", ({ device_id }) => {
@@ -316,6 +328,7 @@ export default function MusicApp() {
         toggleRepeat={toggleRepeat}
         loadMoreTracks={loadMoreTracks}
         refreshToken={refreshToken}
+        liked={liked}
       />
     </div>
   );

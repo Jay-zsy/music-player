@@ -13,11 +13,12 @@ export default function NowPlaying({
   toggleRepeat,
   loadMoreTracks,
   refreshToken,
+  liked,
 }) {
   return (
     <div className={styles.playingContainer}>
       {currentPlayback.track_window?.current_track ? (
-        <PlayingBarLeft currentPlayback={currentPlayback} />
+        <PlayingBarLeft currentPlayback={currentPlayback} liked={liked} />
       ) : (
         <div className={styles.placeholder}></div>
       )}
