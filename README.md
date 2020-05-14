@@ -18,7 +18,7 @@ Pet project, utilizing React with Spotify and Genius' API and other technologies
 
 - OAuth flow for Spotify & Genius
 - Load saved tracks, playlists, albums, artists, podcasts
-- Fully kited player controls (Play, pause, skip, rewind, seek, volume adjustment)
+- Fully kited player controls (Play, pause, skip, rewind, seek, volume adjustment, shuffle, repeat)
 - Add / Delete tracks from your library
 - Lyrics with web crawling
 
@@ -30,6 +30,7 @@ Pet project, utilizing React with Spotify and Genius' API and other technologies
 - Search for tracks
 - Manage playlists
 - Waveform visualization
+- Dark mode (Theme Personalization)
 
 ## Dependencies
 
