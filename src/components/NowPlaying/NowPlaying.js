@@ -12,8 +12,6 @@ export default function NowPlaying({
   pause,
   toggleShuffle,
   toggleRepeat,
-  loadMoreTracks,
-  refreshToken,
   liked,
   setLiked,
   volume,

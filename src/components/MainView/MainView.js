@@ -27,6 +27,7 @@ export default function MainView({
   topArtists,
   savedAlbums,
   categories,
+  loadMoreSavedTracks,
 }) {
   return (
     <div className={styles.container}>
@@ -71,6 +72,7 @@ export default function MainView({
             pause={pause}
             currentPlayback={currentPlayback}
             savedTracks={savedTracks}
+            loadMoreSavedTracks={loadMoreSavedTracks}
           />
         )}
 

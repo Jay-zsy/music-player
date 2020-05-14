@@ -144,8 +144,8 @@ export default function MusicApp() {
     });
   };
 
-  //Get more tracks
-  const loadMoreTracks = async () => {
+  //Get more tracks from library
+  const loadMoreSavedTracks = async () => {
     try {
       const nextOffset = savedTracks.offset + 50;
       const limit = 50;
@@ -378,6 +378,7 @@ export default function MusicApp() {
         currentPlaylistContext={currentPlaylistContext}
         playlists={playlists}
         categories={categories}
+        loadMoreSavedTracks={loadMoreSavedTracks}
       />
       <NowPlaying
         currentPlayback={currentPlayback}
@@ -388,7 +389,6 @@ export default function MusicApp() {
         pause={pause}
         toggleShuffle={toggleShuffle}
         toggleRepeat={toggleRepeat}
-        loadMoreTracks={loadMoreTracks}
         refreshToken={refreshToken}
         liked={liked}
         setLiked={setLiked}
