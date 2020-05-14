@@ -1,0 +1,81 @@
+$paint-it-black: #101010;
+
+.loader {
+    width: 48px;
+    height: 16px;
+    position: relative;
+
+    .dots {
+        top: 5px;
+        left: 21px;
+        width: 6px;
+        height: 6px;
+        background-color: $paint-it-black;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        background-clip: padding-box;
+        -webkit-animation: growDot 1s linear .15s infinite;
+        -moz-animation: growDot 1s linear .15s infinite;
+        -ms-animation: growDot 1s linear .15s infinite;
+        -o-animation: growDot 1s linear .15s infinite;
+        animation: growDot 1s linear .15s infinite;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -15px;
+            width: 6px;
+            height: 6px;
+            background-color: $paint-it-black;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            background-clip: padding-box;
+            -webkit-animation: growDot 1s linear 0s infinite;
+            -moz-animation: growDot 1s linear 0s infinite;
+            -ms-animation: growDot 1s linear 0s infinite;
+            -o-animation: growDot 1s linear 0s infinite;
+            animation: growDot 1s linear 0s infinite;
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 15px;
+            width: 6px;
+            height: 6px;
+            background-color: $paint-it-black;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            background-clip: padding-box;
+            -webkit-animation: growDot 1s linear .3s infinite;
+            -moz-animation: growDot 1s linear .3s infinite;
+            -ms-animation: growDot 1s linear .3s infinite;
+            -o-animation: growDot 1s linear .3s infinite;
+            animation: growDot 1s linear .3s infinite;
+        }
+
+        @keyframes growDot {
+            0% {
+                opacity: 0.7;
+                box-shadow: 0px 0px 0px 0px $paint-it-black;
+            }
+
+            25% {
+                opacity: 1;
+                box-shadow: 0px 0px 0px 4px $paint-it-black;
+            }
+
+            50% {
+                opacity: 0.7;
+                box-shadow: 0px 0px 0px 0px $paint-it-black;
+            }
+
+            100% {
+                opacity: 0.6;
+                box-shadow: 0px 0px 0px 0px $paint-it-black;
+            }
+        }
+    }
+}

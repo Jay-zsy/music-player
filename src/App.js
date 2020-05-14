@@ -148,7 +148,6 @@ export default function MusicApp() {
 
   //Get more tracks from library
   const loadMoreSavedTracks = async () => {
-    console.log("does this work as being debounced?");
     try {
       const nextOffset = savedTracks.offset + 50;
       const limit = 50;

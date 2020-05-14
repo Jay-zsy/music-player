@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import Divider from "./Divider";
+import Ellipsis from "../../Loader/Ellipsis";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import PauseIcon from "@material-ui/icons/Pause";
 import MusicNoteIcon from "@material-ui/icons/MusicNote";
@@ -84,6 +85,9 @@ export default React.forwardRef(
                   </li>
                 );
               })}
+              <div className={styles.loading}>
+                <Ellipsis />
+              </div>
             </ol>
           </section>
         </div>
