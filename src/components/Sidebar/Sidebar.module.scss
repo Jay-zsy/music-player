@@ -7,6 +7,12 @@
     flex-direction: column;
     align-items: stretch;
     padding: 24px 12px 0 12px;
+    opacity: 0;
+
+    animation: fadeIn 0.5s 0.25s ease-in forwards;
+    -webkit-animation: fadeIn 0.5s 0.25s ease-in forwards;
+    -moz-animation: fadeIn 0.5s 0.25s ease-in forwards;
+    -o-animation: fadeIn 0.5s 0.25s ease-in forwards;
 
     // ::-webkit-scrollbar {
     //     width: 17px;
@@ -30,5 +36,16 @@
         background-color: #282828;
         border: none;
         height: 1px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        transform: translateY(-1rem);
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
     }
 }

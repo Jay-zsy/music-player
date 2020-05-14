@@ -6,9 +6,26 @@
     align-items: center;
     justify-content: space-between;
     background: #f4f4f4;
+    opacity: 0;
+
+    animation: fadeIn 0.5s ease-in forwards;
+    -webkit-animation: fadeIn 0.5s ease-in forwards;
+    -moz-animation: fadeIn 0.5s ease-in forwards;
+    -o-animation: fadeIn 0.5s ease-in forwards;
 
     .wrapper {
         display: flex;
         flex: 0 1 364px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        transform: translateX(1rem);
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
     }
 }
