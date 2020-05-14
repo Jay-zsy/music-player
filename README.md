@@ -8,7 +8,7 @@ Pet project, utilizing React with Spotify and Genius' API and other technologies
 
 - https://my-personal-music-player.netlify.app
 
-!["Home Page"](https://github.com/hollowic/music-player/blob/master/ss/Screen%20Shot%202020-05-14%20at%2012.35.06%20AM.png?raw=true)
+!["Home Page"](https://github.com/hollowic/music-player/blob/master/ss/Screen%20Shot%202020-05-14%20at%2012.34.30%20AM.png?raw=true)
 
 !["Liked Songs"](https://github.com/hollowic/music-player/blob/master/ss/Screen%20Shot%202020-05-14%20at%2012.34.30%20AM.png?raw=true)
 
