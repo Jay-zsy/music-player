@@ -37,7 +37,7 @@ export default function MainView({
   const startSearch = (e) => {
     if (likeRef.current) {
       if (e.nativeEvent.target.scrollTop / likeRef.current.offsetHeight > 0.8) {
-        // debouncedLoadMoreSavedTracks();
+        debouncedLoadMoreSavedTracks();
       }
     }
   };
