@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./MusicApp.module.scss";
+import Entry from "./components/Entry/Entry";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Topbar from "./components/Topbar/Topbar";
 import MainView from "./components/MainView/MainView";
@@ -333,7 +334,7 @@ export default function MusicApp() {
     }
   }, [spotifyToken, user.id]);
 
-  return (
+  return spotifyToken ? (
     <div className={styles.musicApp}>
       <Topbar
         profile={user?.profile?.url}
@@ -388,5 +389,7 @@ export default function MusicApp() {
         updateVolume={updateVolume}
       />
     </div>
+  ) : (
+    <Entry />
   );
 }
