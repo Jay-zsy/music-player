@@ -5,7 +5,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import Topbar from "./components/Topbar/Topbar";
 import MainView from "./components/MainView/MainView";
 import NowPlaying from "./components/NowPlaying/NowPlaying";
-import { getCookie, cycleRepeat } from "./helperFn/helperFn";
+import { getCookie, cycleRepeat, getHashParams } from "./helperFn/helperFn";
 import axios from "axios";
 import SpotifyWebApi from "spotify-web-api-js";
 const spotifyApi = new SpotifyWebApi();
@@ -164,6 +164,14 @@ export default function MusicApp() {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    const { access_token, refresh_token } = getHashParams();
+
+    if (access_token) {
+      setSpotifyToken(access_token);
+    }
+  }, []);
 
   useEffect(() => {
     if (spotifyToken) {
