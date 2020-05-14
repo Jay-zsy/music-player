@@ -6,11 +6,13 @@ Pet project, utilizing React with Spotify and Genius' API and other technologies
 
 ## Demo
 
-- https://powerful-everglades-87732.herokuapp.com
+- https://my-personal-music-player.netlify.app
 
-!["Index Page"](https://github.com/hollowic/music-player-gui/blob/master/ss/Screen%20Shot%202020-01-03%20at%207.17.46%20PM.png)
+!["Home Page"](https://github.com/hollowic/music-player/blob/master/ss/Screen%20Shot%202020-05-14%20at%2012.35.06%20AM.png?raw=true)
 
-- https://streamable.com/y44mz
+!["Liked Songs"](https://github.com/hollowic/music-player/blob/master/ss/Screen%20Shot%202020-05-14%20at%2012.34.30%20AM.png?raw=true)
+
+!["Playlist"](https://github.com/hollowic/music-player/blob/master/ss/Screen%20Shot%202020-05-14%20at%2012.35.06%20AM.png?raw=true)
 
 ## Features
 
