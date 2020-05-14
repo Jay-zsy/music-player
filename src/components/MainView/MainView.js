@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useRef } from "react";
+import { debounce } from "lodash";
 import RecentlyPlayed from "./Home/RecentlyPlayed";
 import PopularNewReleases from "./Home/PopularNewReleases";
 import FeaturedPlaylists from "./Home/FeaturedPlaylists";
@@ -29,8 +30,20 @@ export default function MainView({
   categories,
   loadMoreSavedTracks,
 }) {
+  const likeRef = useRef(null);
+
+  const debouncedLoadMoreSavedTracks = debounce(loadMoreSavedTracks, 2000);
+
+  const startSearch = (e) => {
+    if (likeRef.current) {
+      if (e.nativeEvent.target.scrollTop / likeRef.current.offsetHeight > 0.8) {
+        debouncedLoadMoreSavedTracks();
+      }
+    }
+  };
+
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onScroll={(e) => startSearch(e)}>
       <div className={styles.viewNode}>
         <div className={styles.space}></div>
 
@@ -66,6 +79,7 @@ export default function MainView({
 
         {currentPage === "Liked" && (
           <LikedSongs
+            ref={likeRef}
             name={name}
             profile={profile}
             play={play}
