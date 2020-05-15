@@ -211,44 +211,47 @@ export default function MusicApp() {
         // SDK Playback status updates
         webPlayback.addListener("player_state_changed", (state) => {
           //getting the user's current playback state
-          const {
-            duration,
-            paused,
-            track_window,
-            position,
-            repeat_mode,
-            shuffle,
-            timestamp,
-          } = state;
-          setCurrentPlayback({
-            duration,
-            paused,
-            track_window,
-            position,
-            repeat_mode,
-            shuffle,
-            timestamp,
-          });
-
-          //getting liked status
-          const getLikedStatus = async () => {
-            try {
-              const likedStatus = await spotifyApi.containsMySavedTracks([
-                track_window?.current_track?.id,
-              ]);
-              setLiked(likedStatus);
-            } catch (err) {
-              console.log(err);
-            }
-          };
-          getLikedStatus();
-
-          webPlayback.getVolume().then((volume) => {
-            let volume_percentage = volume * 100;
-            setVolume((prevState) => {
-              return { ...prevState, current: Math.floor(volume_percentage) };
+          console.log(state);
+          if (state) {
+            const {
+              duration,
+              paused,
+              track_window,
+              position,
+              repeat_mode,
+              shuffle,
+              timestamp,
+            } = state;
+            setCurrentPlayback({
+              duration,
+              paused,
+              track_window,
+              position,
+              repeat_mode,
+              shuffle,
+              timestamp,
             });
-          });
+
+            //getting liked status
+            const getLikedStatus = async () => {
+              try {
+                const likedStatus = await spotifyApi.containsMySavedTracks([
+                  track_window?.current_track?.id,
+                ]);
+                setLiked(likedStatus);
+              } catch (err) {
+                console.log(err);
+              }
+            };
+            getLikedStatus();
+
+            webPlayback.getVolume().then((volume) => {
+              let volume_percentage = volume * 100;
+              setVolume((prevState) => {
+                return { ...prevState, current: Math.floor(volume_percentage) };
+              });
+            });
+          }
         });
         // SDK on ready
         webPlayback.addListener("ready", ({ device_id }) => {
@@ -366,6 +369,8 @@ export default function MusicApp() {
           product={user.product}
           setCurrentPlaylistContext={setCurrentPlaylistContext}
           setCurrentPage={setCurrentPage}
+          expandedView={expandedView}
+          setExpandedView={setExpandedView}
         />
         <MainView
           currentPage={currentPage}

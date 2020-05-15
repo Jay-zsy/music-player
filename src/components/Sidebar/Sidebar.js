@@ -12,6 +12,8 @@ export default function Sidebar({
   product,
   setCurrentPlaylistContext,
   setCurrentPage,
+  expandedView,
+  setExpandedView,
 }) {
   return (
     <div className={styles.sidebar}>
