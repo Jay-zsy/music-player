@@ -1,5 +1,6 @@
 .sidebar {
     grid-area: side-bar;
+    position: relative;
     background-color: #ffffff;
     width: 230px;
     height: calc(100vh - 90px);
@@ -8,6 +9,7 @@
     align-items: stretch;
     padding: 24px 12px 0 12px;
     opacity: 0;
+    overflow: hidden;
 
     animation: fadeIn 0.5s 0.25s ease-in forwards;
     -webkit-animation: fadeIn 0.5s 0.25s ease-in forwards;

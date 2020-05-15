@@ -1,6 +1,26 @@
 .container {
     width: 230px;
     height: 230px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+
+    img {
+        width: 100%;
+    }
+}
+
+.containerShifted {
+    width: 230px;
+    height: 230px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    cursor: pointer;
+    transform: translateY(100%);
+    transition: all 0.25s ease-in;
 
     img {
         width: 100%;

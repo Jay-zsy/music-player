@@ -211,7 +211,6 @@ export default function MusicApp() {
         // SDK Playback status updates
         webPlayback.addListener("player_state_changed", (state) => {
           //getting the user's current playback state
-          console.log(state);
           if (state) {
             const {
               duration,
@@ -371,6 +370,7 @@ export default function MusicApp() {
           setCurrentPage={setCurrentPage}
           expandedView={expandedView}
           setExpandedView={setExpandedView}
+          currentPlayback={currentPlayback}
         />
         <MainView
           currentPage={currentPage}

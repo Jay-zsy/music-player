@@ -2,6 +2,7 @@ import React from "react";
 import UserProfile from "./UserProfile";
 import MenuTab from "./MenuTab";
 import PlaylistsTab from "./PlaylistsTab";
+import TrackImage from "./TrackImage";
 import styles from "./Sidebar.module.scss";
 
 export default function Sidebar({
@@ -14,6 +15,7 @@ export default function Sidebar({
   setCurrentPage,
   expandedView,
   setExpandedView,
+  currentPlayback,
 }) {
   return (
     <div className={styles.sidebar}>
@@ -29,6 +31,14 @@ export default function Sidebar({
         playlists={playlists}
         setCurrentPlaylistContext={setCurrentPlaylistContext}
         setCurrentPage={setCurrentPage}
+      />
+      <TrackImage
+        expandedView={expandedView}
+        setExpandedView={setExpandedView}
+        cover={
+          currentPlayback?.track_window?.current_track?.album?.images[0].url
+        }
+        name={currentPlayback?.track_window?.current_track?.name}
       />
     </div>
   );

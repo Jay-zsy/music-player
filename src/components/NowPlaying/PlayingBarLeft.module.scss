@@ -50,7 +50,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    transition: all 1s ease;
+    transition: all 0.25s ease-in;
 
     @include child()
 }
@@ -61,7 +61,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    transition: all 1s ease;
+    transition: all 0.2s ease-out;
 
     @include child()
 }
