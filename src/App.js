@@ -36,6 +36,7 @@ export default function MusicApp() {
   const [liked, setLiked] = useState([]);
   const [categories, setCategories] = useState({});
   const [volume, setVolume] = useState({ current: 100, prev: 0 });
+  const [expandedView, setExpandedView] = useState(false);
 
   const transferPlayback = (deviceID) => {
     spotifyApi
@@ -402,6 +403,8 @@ export default function MusicApp() {
           volume={volume}
           toggleVolume={toggleVolume}
           updateVolume={updateVolume}
+          expandedView={expandedView}
+          setExpandedView={setExpandedView}
         />
       </div>
     )

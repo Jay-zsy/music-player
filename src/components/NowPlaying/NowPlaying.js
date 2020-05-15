@@ -17,6 +17,8 @@ export default function NowPlaying({
   volume,
   toggleVolume,
   updateVolume,
+  expandedView,
+  setExpandedView,
 }) {
   return (
     <div className={styles.playingContainer}>
@@ -25,6 +27,8 @@ export default function NowPlaying({
           currentPlayback={currentPlayback}
           liked={liked}
           setLiked={setLiked}
+          expandedView={expandedView}
+          setExpandedView={setExpandedView}
         />
       ) : (
         <div className={styles.placeholder}></div>

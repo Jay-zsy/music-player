@@ -7,10 +7,16 @@ import {
   likeTrack,
   unlikeTrack,
 } from "../../helperFn/helperFn";
-export default function PlayingBarLeft({ currentPlayback, liked, setLiked }) {
+export default function PlayingBarLeft({
+  currentPlayback,
+  liked,
+  setLiked,
+  expandedView,
+  setExpandedView,
+}) {
   return (
-    <div className={styles.left}>
-      <div className={styles.cover}>
+    <div className={expandedView ? styles.leftShifted : styles.left}>
+      <div className={styles.cover} onClick={() => setExpandedView(true)}>
         <img
           src={
             currentPlayback.track_window?.current_track?.album?.images[0].url

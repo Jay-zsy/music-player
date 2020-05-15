@@ -1,9 +1,4 @@
-.left {
-    width: 30%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-
+@mixin child {
     .cover {
         width: 56px;
         height: 56px;
@@ -48,4 +43,23 @@
             outline: none;
         }
     }
+}
+
+.left {
+    width: 30%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    @include child()
+}
+
+.leftShifted {
+    transform: translateX(-72px);
+    width: 30%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    @include child()
 }
