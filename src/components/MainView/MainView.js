@@ -31,19 +31,24 @@ export default function MainView({
   loadMoreSavedTracks,
 }) {
   const likeRef = useRef(null);
+  const playlistRef = useRef(null);
 
   const debouncedLoadMoreSavedTracks = debounce(loadMoreSavedTracks, 2000);
 
-  const startSearch = (e) => {
+  const checkScrollPosition = (e) => {
     if (likeRef.current) {
       if (e.nativeEvent.target.scrollTop / likeRef.current.offsetHeight > 0.8) {
         debouncedLoadMoreSavedTracks();
       }
     }
+    if (playlistRef.current) {
+      if (e.nativeEvent.target.scrollTop >= 380)
+        console.log("change state upstairs and change topbar");
+    }
   };
 
   return (
-    <div className={styles.container} onScroll={(e) => startSearch(e)}>
+    <div className={styles.container} onScroll={(e) => checkScrollPosition(e)}>
       <div className={styles.viewNode}>
         <div className={styles.space}></div>
 
@@ -92,6 +97,7 @@ export default function MainView({
 
         {currentPage === "Playlist" && (
           <Playlist
+            ref={playlistRef}
             currentPlaylistContext={currentPlaylistContext}
             currentPlayback={currentPlayback}
           />
