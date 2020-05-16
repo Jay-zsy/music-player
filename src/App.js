@@ -38,6 +38,7 @@ export default function MusicApp() {
   const [volume, setVolume] = useState({ current: 100, prev: 0 });
   const [expandedView, setExpandedView] = useState(false);
   const [scrollPast, setScrollPast] = useState(false);
+  const [query, setQuery] = useState("");
 
   const transferPlayback = (deviceID) => {
     spotifyApi
@@ -54,6 +55,7 @@ export default function MusicApp() {
       .then((res) => console.log(res));
   };
 
+  //Skip to next
   const skipToNext = async () => {
     try {
       const response = await spotifyApi.skipToNext();
@@ -63,6 +65,7 @@ export default function MusicApp() {
     }
   };
 
+  //Rewind or Skip to next
   const skipToPrevious = async () => {
     try {
       if (currentPlayback?.position <= 1000) {
@@ -76,6 +79,7 @@ export default function MusicApp() {
     }
   };
 
+  //Resume
   const play = async () => {
     try {
       await spotifyApi.play();
@@ -88,6 +92,7 @@ export default function MusicApp() {
     }
   };
 
+  //Pause
   const pause = async () => {
     try {
       await spotifyApi.pause();
@@ -100,6 +105,7 @@ export default function MusicApp() {
     }
   };
 
+  //Toogle Shuffle
   const toggleShuffle = async () => {
     try {
       const shuffleState = currentPlayback.shuffle;
@@ -109,6 +115,7 @@ export default function MusicApp() {
     }
   };
 
+  //Toggle repeat
   const toggleRepeat = async () => {
     try {
       const newRepeatState = cycleRepeat(currentPlayback.repeat_mode);
@@ -118,7 +125,7 @@ export default function MusicApp() {
     }
   };
 
-  // toggle volume
+  //Toggle volume
   const toggleVolume = async (volume) => {
     try {
       if (volume.current) {
@@ -137,7 +144,7 @@ export default function MusicApp() {
     }
   };
 
-  // update volume
+  //Update volume
   const updateVolume = async (e) => {
     const currentPosition = e.nativeEvent.offsetX;
     const totalWidth = e.nativeEvent.target.offsetWidth;
@@ -146,6 +153,11 @@ export default function MusicApp() {
       spotifyApi.setVolume(volume);
       return { current: volume, prev: prevState.current };
     });
+  };
+
+  //Handle search query change
+  const handleOnChangeQuery = (e) => {
+    setQuery(e.target.value);
   };
 
   //Get more tracks from library
@@ -364,6 +376,8 @@ export default function MusicApp() {
           play={play}
           pause={pause}
           currentPlayback={currentPlayback}
+          query={query}
+          handleOnChangeQuery={handleOnChangeQuery}
           currentPlaylistContext={currentPlaylistContext?.currentPlaylist?.name}
         />
         <Sidebar

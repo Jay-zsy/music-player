@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Searchbar.module.scss";
 import SearchIcon from "@material-ui/icons/Search";
 import ClearIcon from "@material-ui/icons/Clear";
-export default function Searchbar() {
+export default function Searchbar({ query, handleOnChangeQuery }) {
   const handleOnClick = () => {
     console.log("hello");
   };
@@ -13,6 +13,8 @@ export default function Searchbar() {
         placeholder="Search for Artists, Songs or Albums"
         autoCapitalize="off"
         autoCorrect="off"
+        value={query}
+        onChange={(e) => handleOnChangeQuery(e)}
       />
       <div className={styles.overlay}>
         <SearchIcon style={{ width: "24px", height: "24px" }} />

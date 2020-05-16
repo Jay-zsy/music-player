@@ -15,11 +15,15 @@ export default function Topbar({
   currentPlaylistContext,
   play,
   pause,
+  query,
+  handleOnChangeQuery,
 }) {
   return (
     <div className={styles.topbar}>
       <div className={styles.navWrapper}>
-        {currentPage === "Browse" && <Searchbar />}
+        {currentPage === "Browse" && (
+          <Searchbar query={query} handleOnChangeQuery={handleOnChangeQuery} />
+        )}
 
         {currentPage === "Collection" && (
           <Navbar setCurrentTab={setCurrentTab} currentTab={currentTab} />
