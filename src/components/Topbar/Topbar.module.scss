@@ -17,12 +17,9 @@
 
     .navWrapper {
         display: flex;
-        flex: 0 1 364px;
-    }
-
-    .contextWrapper {
-        position: absolute;
-        width: 33%;
+        flex-grow: 1;
+        min-width: 0;
+        white-space: nowrap;
     }
 }
 

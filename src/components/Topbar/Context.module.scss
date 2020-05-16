@@ -1,13 +1,15 @@
 .context {
     display: flex;
     align-items: center;
-    flex: 1 1 30%;
-    padding: 0 32px;
+    padding-left: 32px;
+    width: 100%;
+    justify-content: flex-start;
     white-space: nowrap;
 
     button {
         width: 40px;
         height: 40px;
+        flex: 0 0 auto;
         cursor: pointer;
         border: 0;
         border-radius: 50px;
@@ -25,6 +27,5 @@
         padding: 0 16px;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: 50%;
     }
 }

@@ -1,5 +1,4 @@
 import React from "react";
-import DateTime from "./DateTime";
 import UserIcon from "./UserIcon";
 import Context from "./Context";
 import Searchbar from "./Searchbar";
@@ -25,8 +24,7 @@ export default function Topbar({
         {currentPage === "Collection" && (
           <Navbar setCurrentTab={setCurrentTab} currentTab={currentTab} />
         )}
-      </div>
-      <div className={styles.contextWrapper}>
+
         {scrollPast && currentPage === "Liked" && (
           <Context
             context="Liked Songs"
@@ -44,7 +42,6 @@ export default function Topbar({
           />
         )}
       </div>
-      <DateTime />
       <UserIcon profile={profile} />
     </div>
   );
