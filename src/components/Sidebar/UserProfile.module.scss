@@ -3,16 +3,26 @@
     flex-direction: column;
     align-items: center;
 
+    .product {
+        font-family: 'Montserrat', sans-serif;
+        text-transform: uppercase;
+        font-size: 10px;
+        font-weight: 700;
+        background-color: #ffffff;
+        border-radius: 2px;
+        margin-bottom: 0.5rem;
+    }
+
     .placeholder {
-        width: 80px;
-        height: 80px;
+        width: 100px;
+        height: 100px;
         border-radius: 50px;
         background: #ffffff;
     }
 
     .profilePicture {
-        width: 80px;
-        height: 80px;
+        width: 100px;
+        height: 100px;
         border-radius: 50px;
         box-shadow: -3px -3px 5px #ffffff,
             3px 3px 5px #5e6879;
@@ -20,9 +30,7 @@
 
     .name {
         margin: 1rem;
+        font-weight: 700;
     }
 
-    .email {
-        margin: 1rem;
-    }
 }

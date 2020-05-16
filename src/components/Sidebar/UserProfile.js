@@ -4,16 +4,18 @@ export default function UserProfile({ username, email, profile, product }) {
   return (
     <div className={styles.profileContainer}>
       {profile ? (
-        <img
-          src={profile}
-          alt="Your profile"
-          className={styles.profilePicture}
-        ></img>
+        <>
+          <div className={styles.product}>{product || '"Your product"'}</div>
+          <img
+            src={profile}
+            alt="Your profile"
+            className={styles.profilePicture}
+          ></img>
+        </>
       ) : (
         <div className={styles.placeholder}></div>
       )}
       <div className={styles.name}>{username || '"Your name"'}</div>
-      <div className={styles.email}>{product || '"Your product"'}</div>
     </div>
   );
 }
