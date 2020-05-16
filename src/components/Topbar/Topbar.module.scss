@@ -7,15 +7,22 @@
     justify-content: space-between;
     background: #f4f4f4;
     opacity: 0;
+    position: relative;
+    max-width: calc(100vw - 230px);
 
     animation: fadeIn 0.5s ease-in forwards;
     -webkit-animation: fadeIn 0.5s ease-in forwards;
     -moz-animation: fadeIn 0.5s ease-in forwards;
     -o-animation: fadeIn 0.5s ease-in forwards;
 
-    .wrapper {
+    .navWrapper {
         display: flex;
         flex: 0 1 364px;
+    }
+
+    .contextWrapper {
+        position: absolute;
+        width: 33%;
     }
 }
 

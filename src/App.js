@@ -37,6 +37,7 @@ export default function MusicApp() {
   const [categories, setCategories] = useState({});
   const [volume, setVolume] = useState({ current: 100, prev: 0 });
   const [expandedView, setExpandedView] = useState(false);
+  const [scrollPast, setScrollPast] = useState(false);
 
   const transferPlayback = (deviceID) => {
     spotifyApi
@@ -359,6 +360,11 @@ export default function MusicApp() {
           currentPage={currentPage}
           setCurrentTab={setCurrentTab}
           currentTab={currentTab}
+          scrollPast={scrollPast}
+          play={play}
+          pause={pause}
+          currentPlayback={currentPlayback}
+          currentPlaylistContext={currentPlaylistContext?.currentPlaylist?.name}
         />
         <Sidebar
           username={user.display_name}
@@ -392,6 +398,8 @@ export default function MusicApp() {
           playlists={playlists}
           categories={categories}
           loadMoreSavedTracks={loadMoreSavedTracks}
+          scrollPast={scrollPast}
+          setScrollPast={setScrollPast}
         />
         <NowPlaying
           currentPlayback={currentPlayback}

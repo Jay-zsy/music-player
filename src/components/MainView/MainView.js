@@ -29,9 +29,12 @@ export default function MainView({
   savedAlbums,
   categories,
   loadMoreSavedTracks,
+  scrollPast,
+  setScrollPast,
 }) {
   const likeRef = useRef(null);
   const playlistRef = useRef(null);
+  const viewRef = useRef(null);
 
   const debouncedLoadMoreSavedTracks = debounce(loadMoreSavedTracks, 2000);
 
@@ -41,15 +44,18 @@ export default function MainView({
         debouncedLoadMoreSavedTracks();
       }
     }
-    if (playlistRef.current) {
-      if (e.nativeEvent.target.scrollTop >= 380)
-        console.log("change state upstairs and change topbar");
+    if (viewRef.current.scrollTop >= 380) {
+      if (!scrollPast) setScrollPast(true);
+    }
+
+    if (viewRef.current.scrollTop < 380) {
+      if (scrollPast) setScrollPast(false);
     }
   };
 
   return (
     <div className={styles.container} onScroll={(e) => checkScrollPosition(e)}>
-      <div className={styles.viewNode}>
+      <div className={styles.viewNode} ref={viewRef}>
         <div className={styles.space}></div>
 
         {currentPage === "Home" && (
