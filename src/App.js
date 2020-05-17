@@ -6,6 +6,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import Topbar from "./components/Topbar/Topbar";
 import MainView from "./components/MainView/MainView";
 import NowPlaying from "./components/NowPlaying/NowPlaying";
+import useDebouncedCallback from "use-debounce/lib/useDebouncedCallback";
 import { getCookie, cycleRepeat, getHashParams } from "./helperFn/helperFn";
 import axios from "axios";
 import SpotifyWebApi from "spotify-web-api-js";
@@ -39,6 +40,19 @@ export default function MusicApp() {
   const [expandedView, setExpandedView] = useState(false);
   const [scrollPast, setScrollPast] = useState(false);
   const [query, setQuery] = useState("");
+  const [debouncedQuerySearch] = useDebouncedCallback(async (value) => {
+    if (value === "" || !value) return;
+    try {
+      const res = await spotifyApi.search(
+        value,
+        ["album", "artist", "playlist", "track", "show"],
+        { limit: 50 }
+      );
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  }, 1000);
 
   const transferPlayback = (deviceID) => {
     spotifyApi
@@ -158,6 +172,7 @@ export default function MusicApp() {
   //Handle search query change
   const handleOnChangeQuery = (e) => {
     setQuery(e.target.value);
+    debouncedQuerySearch(e.target.value);
   };
 
   //Get more tracks from library
@@ -377,6 +392,7 @@ export default function MusicApp() {
           pause={pause}
           currentPlayback={currentPlayback}
           query={query}
+          setQuery={setQuery}
           handleOnChangeQuery={handleOnChangeQuery}
           currentPlaylistContext={currentPlaylistContext?.currentPlaylist?.name}
         />

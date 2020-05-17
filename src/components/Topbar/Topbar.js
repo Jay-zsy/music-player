@@ -16,13 +16,18 @@ export default function Topbar({
   play,
   pause,
   query,
+  setQuery,
   handleOnChangeQuery,
 }) {
   return (
     <div className={styles.topbar}>
       <div className={styles.navWrapper}>
         {currentPage === "Browse" && (
-          <Searchbar query={query} handleOnChangeQuery={handleOnChangeQuery} />
+          <Searchbar
+            query={query}
+            handleOnChangeQuery={handleOnChangeQuery}
+            setQuery={setQuery}
+          />
         )}
 
         {currentPage === "Collection" && (
