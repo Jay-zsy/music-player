@@ -1,0 +1,115 @@
+ol {
+    list-style: none;
+
+    li {
+        display: flex;
+        height: 4.56em;
+        justify-content: space-between;
+        align-items: center;
+
+        .left {
+            padding-right: 1em;
+            width: 3em;
+            height: 100%;
+            margin-top: .7em;
+        }
+
+        .trackInfo {
+            flex: 1 1 0;
+            width: 0;
+            overflow: hidden;
+            padding-right: 1px;
+            margin-right: -1px;
+            height: 100%;
+            margin-top: .7em;
+
+            .trackName,
+            .trackNameActive {
+                font-size: 16px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                padding-right: 1px;
+                margin-right: -1px;
+            }
+
+            .trackNameActive {
+                color: #1db954
+            }
+
+            .bot {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                margin-top: 0.4em;
+
+                .trackArtists,
+                .trackAlbum {
+                    font-size: 14px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    padding-right: 1px;
+                    margin-right: -1px;
+                    opacity: 0.6;
+                }
+
+                .separator {
+                    padding: 0 8px;
+                    opacity: 0.6;
+                }
+
+            }
+
+        }
+
+        .right,
+        .rightActive {
+            text-align: right;
+            padding-right: 1em;
+            width: 3.9em;
+            height: 100%;
+            margin-top: .7em;
+        }
+
+        .rightActive {
+            color: #1db954
+        }
+
+        .play,
+        .pause,
+        .playActive,
+        .pauseActive {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .note {
+            width: 16px;
+            height: 16px;
+        }
+
+        &:hover {
+            background-color: hsla(0, 0%, 100%, .74);
+        }
+
+        &:hover .play,
+        &:hover .pause {
+            display: block;
+        }
+
+        &:hover .playActive,
+        &:hover .pauseActive {
+            display: block;
+            color: #1db954
+        }
+
+        &:hover .note {
+            display: none;
+        }
+
+    }
+
+}

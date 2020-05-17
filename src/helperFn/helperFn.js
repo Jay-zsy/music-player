@@ -224,3 +224,12 @@ export const getHashParams = () => {
   }
   return hashParams;
 };
+// Play particular song
+export const playParticularTrack = async (trackURI) => {
+  try {
+    console.log(trackURI);
+    await spotifyApi.play({ uris: [trackURI] });
+  } catch (err) {
+    console.log(err);
+  }
+};

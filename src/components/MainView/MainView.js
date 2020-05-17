@@ -77,7 +77,13 @@ export default function MainView({
           <section className={styles.wrapper}>
             {!query && <Browse categories={categories} />}
             {query && (
-              <SearchResult queryResults={queryResults} query={query} />
+              <SearchResult
+                queryResults={queryResults}
+                query={query}
+                play={play}
+                pause={pause}
+                currentPlayback={currentPlayback}
+              />
             )}
           </section>
         )}
