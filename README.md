@@ -20,14 +20,13 @@ Pet project, utilizing React with Spotify and Genius' API and other technologies
 - Load saved tracks, playlists, albums, artists, podcasts
 - Fully kited player controls (Play, pause, skip, rewind, seek, volume adjustment, shuffle, repeat)
 - Add / Delete tracks from your library
+- Search for tracks, artists, albums, playlists and podcasts
 - Lyrics with web crawling
 
 ## Future Features
 
 - Better lyrics searching logic
-- Various user/accounts
 - Better UI design
-- Search for tracks
 - Manage playlists
 - Waveform visualization
 - Dark mode (Theme Personalization)
