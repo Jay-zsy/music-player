@@ -14,7 +14,9 @@ export default function Row({ label, contexts }) {
               <div className={styles.card} key={context.id}>
                 <div className={styles.contentWrapper}>
                   <div className={styles.cover}>
-                    <img src={context?.images[0].url} alt="Album art" />
+                    {context?.images[0] && (
+                      <img src={context?.images[0].url} alt="Cover art" />
+                    )}
                   </div>
                   <div className={styles.info}>
                     <div className={styles.top}>{context?.name}</div>
