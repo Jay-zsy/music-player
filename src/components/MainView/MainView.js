@@ -8,6 +8,7 @@ import LikedSongs from "./LikedSongs/LikedSongs";
 import Playlist from "./Playlists/Playlist";
 import Library from "./Library/Library";
 import Browse from "./Browse/Browse";
+import SearchResult from "./Browse/SearchResult";
 import styles from "./MainView.module.scss";
 
 export default function MainView({
@@ -32,6 +33,7 @@ export default function MainView({
   scrollPast,
   setScrollPast,
   queryResults,
+  query,
 }) {
   const likeRef = useRef(null);
   const playlistRef = useRef(null);
@@ -73,7 +75,10 @@ export default function MainView({
 
         {currentPage === "Browse" && (
           <section className={styles.wrapper}>
-            <Browse categories={categories} />
+            {!query && <Browse categories={categories} />}
+            {query && (
+              <SearchResult queryResults={queryResults} query={query} />
+            )}
           </section>
         )}
 

@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100vh - 150px);
+    align-items: center;
+    justify-content: center;
+
+    .title {
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    .message {
+        font-size: 14px;
+        font-weight: 500;
+        padding-top: 10px;
+    }
+}

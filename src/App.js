@@ -454,6 +454,7 @@ export default function MusicApp() {
           scrollPast={scrollPast}
           setScrollPast={setScrollPast}
           queryResults={queryResults}
+          query={query}
         />
         <NowPlaying
           currentPlayback={currentPlayback}
