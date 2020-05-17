@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import styles from "./MusicApp.module.scss";
 import Entry from "./components/Entry/Entry";
 import Loader from "./components/Loader/Loader";
@@ -6,7 +6,6 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import Topbar from "./components/Topbar/Topbar";
 import MainView from "./components/MainView/MainView";
 import NowPlaying from "./components/NowPlaying/NowPlaying";
-import useDebouncedCallback from "use-debounce/lib/useDebouncedCallback";
 import { getCookie, cycleRepeat, getHashParams } from "./helperFn/helperFn";
 import axios from "axios";
 import SpotifyWebApi from "spotify-web-api-js";
@@ -40,19 +39,63 @@ export default function MusicApp() {
   const [expandedView, setExpandedView] = useState(false);
   const [scrollPast, setScrollPast] = useState(false);
   const [query, setQuery] = useState("");
-  const [debouncedQuerySearch] = useDebouncedCallback(async (value) => {
+  const [queryResults, setQueryResults] = useState({});
+  // const [debouncedQuerySearch] = useDebouncedCallback(async (value) => {
+  //   if (value === "" || !value) return;
+  //   try {
+  //     const {
+  //       albums,
+  //       artists,
+  //       playlists,
+  //       shows,
+  //       tracks,
+  //     } = await spotifyApi.search(
+  //       value,
+  //       ["album", "artist", "playlist", "track", "show"],
+  //       { limit: 50 }
+  //     );
+  //     console.log({ albums, artists, playlists, shows, tracks });
+  //     setQueryResults({ albums, artists, playlists, shows, tracks });
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }, 1000);
+
+  const sendQuery = async (value) => {
     if (value === "" || !value) return;
     try {
-      const res = await spotifyApi.search(
+      const {
+        albums,
+        artists,
+        playlists,
+        shows,
+        tracks,
+      } = await spotifyApi.search(
         value,
         ["album", "artist", "playlist", "track", "show"],
         { limit: 50 }
       );
-      console.log(res);
+      console.log({ albums, artists, playlists, shows, tracks });
+      setQueryResults({ albums, artists, playlists, shows, tracks });
     } catch (err) {
       console.log(err);
     }
-  }, 1000);
+  };
+
+  const debounce = (fn, delay) => {
+    let timeoutId;
+    return function (...args) {
+      clearInterval(timeoutId);
+      timeoutId = setTimeout(() => fn.apply(this, args), delay);
+    };
+  };
+
+  const debounceCallback = useCallback(
+    debounce((value) => {
+      sendQuery(value);
+    }, 1000),
+    []
+  );
 
   const transferPlayback = (deviceID) => {
     spotifyApi
@@ -170,9 +213,9 @@ export default function MusicApp() {
   };
 
   //Handle search query change
-  const handleOnChangeQuery = (e) => {
-    setQuery(e.target.value);
-    debouncedQuerySearch(e.target.value);
+  const handleOnChangeQuery = (value) => {
+    setQuery(value);
+    debounceCallback(value);
   };
 
   //Get more tracks from library
@@ -430,6 +473,7 @@ export default function MusicApp() {
           loadMoreSavedTracks={loadMoreSavedTracks}
           scrollPast={scrollPast}
           setScrollPast={setScrollPast}
+          queryResults={queryResults}
         />
         <NowPlaying
           currentPlayback={currentPlayback}

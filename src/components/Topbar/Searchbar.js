@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import styles from "./Searchbar.module.scss";
 import SearchIcon from "@material-ui/icons/Search";
 import ClearIcon from "@material-ui/icons/Clear";
@@ -18,7 +18,7 @@ export default function Searchbar({ query, handleOnChangeQuery, setQuery }) {
         autoCapitalize="off"
         autoCorrect="off"
         defaultValue={query}
-        onChange={(e) => handleOnChangeQuery(e)}
+        onChange={(e) => handleOnChangeQuery(e.target.value)}
       />
       <div className={styles.overlay}>
         <SearchIcon style={{ width: "24px", height: "24px" }} />

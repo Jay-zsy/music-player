@@ -31,6 +31,7 @@ export default function MainView({
   loadMoreSavedTracks,
   scrollPast,
   setScrollPast,
+  queryResults,
 }) {
   const likeRef = useRef(null);
   const playlistRef = useRef(null);
