@@ -40,26 +40,6 @@ export default function MusicApp() {
   const [scrollPast, setScrollPast] = useState(false);
   const [query, setQuery] = useState("");
   const [queryResults, setQueryResults] = useState({});
-  // const [debouncedQuerySearch] = useDebouncedCallback(async (value) => {
-  //   if (value === "" || !value) return;
-  //   try {
-  //     const {
-  //       albums,
-  //       artists,
-  //       playlists,
-  //       shows,
-  //       tracks,
-  //     } = await spotifyApi.search(
-  //       value,
-  //       ["album", "artist", "playlist", "track", "show"],
-  //       { limit: 50 }
-  //     );
-  //     console.log({ albums, artists, playlists, shows, tracks });
-  //     setQueryResults({ albums, artists, playlists, shows, tracks });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }, 1000);
 
   const sendQuery = async (value) => {
     if (value === "" || !value) return;
