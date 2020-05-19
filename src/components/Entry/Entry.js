@@ -8,8 +8,8 @@ export default function Entry() {
       <a
         href={
           process.env.REACT_APP_API_URL
-            ? `${process.env.REACT_APP_API_URL}/spotify`
-            : "https://powerful-everglades-87732.herokuapp.com/spotify"
+            ? `${process.env.REACT_APP_API_URL}/api/spotify`
+            : "https://powerful-everglades-87732.herokuapp.com/api/spotify"
         }
       >
         <PowerSettingsNewRoundedIcon style={{ fontSize: "96px" }} />
